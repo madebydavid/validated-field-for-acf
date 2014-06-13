@@ -673,7 +673,8 @@ class acf_field_validated_field extends acf_field {
 	*/
 	function input_admin_enqueue_scripts(){
 		// register acf scripts
-		$min = ( ! $this->debug )? '.min' : '';
+        //$min = ( ! $this->debug )? '.min' : '';
+        $min = '';
 		wp_register_script( 'acf-validated_field', $this->settings['dir'] . "js/input{$min}.js", array( 'acf-input' ), $this->settings['version'] );
 		wp_register_script( 'jquery-masking', $this->settings['dir'] . "js/jquery.maskedinput{$min}.js", array( 'jquery' ), $this->settings['version']);
 		wp_register_script( 'sh-core', $this->settings['dir'] . 'js/shCore.js', array( 'acf-input' ), $this->settings['version'] );

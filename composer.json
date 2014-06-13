@@ -1,0 +1,8 @@
+{
+    "name":"madebydavid/validated-field-for-acf",
+    "description":"composered fork which also submits other fields to the php validators",
+    "type":"wordpress-plugin",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

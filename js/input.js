@@ -73,7 +73,23 @@ var vf = {
 				}
 			});
 		});
-
+		
+		var otherFields = [];
+		$('.field:not(:has(.validated-field))').each(function(){
+            parent = $(this).closest('.field');
+            
+            $(this).find(inputSelector).each(function(index, elem){
+                el = $(elem);
+                if (el.attr('name') && el.attr('name').indexOf('acfcloneindex')<0){
+                    var field = { 
+                            id: el.attr('name'),
+                            value: el.val()
+                    };
+                    otherFields.push(field);
+                }
+            });
+        });
+		
 		$('.acf_postbox:hidden').remove();
 
 		// if there are no fields, don't make an ajax call.
@@ -88,7 +104,8 @@ var vf = {
 					action: 'validate_fields',
 					post_id: $('#post_ID').val(),
 					click_id: clickObj.attr('id'),
-					fields: fields
+					fields: fields,
+					otherFields: otherFields
 				},
 				type: 'POST',
 				dataType: 'json',
